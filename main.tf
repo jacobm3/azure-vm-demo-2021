@@ -1,5 +1,4 @@
 terraform {
-  required_version = ">= 0.11.1"
 }
 
 variable "location" {
@@ -17,7 +16,6 @@ variable "admin_password" {
 
 module "windowsserver" {
   source              = "Azure/compute/azurerm"
-  version             = "1.1.5"
   location            = "${var.location}"
   resource_group_name = "${var.windows_dns_prefix}-rc"
   vm_hostname         = "pwc-ptfe"
@@ -29,7 +27,6 @@ module "windowsserver" {
 
 module "network" {
   source              = "Azure/network/azurerm"
-  version             = "1.1.1"
   location            = "${var.location}"
   resource_group_name = "${var.windows_dns_prefix}-rc"
   allow_ssh_traffic   = true
